@@ -29,7 +29,7 @@ public class HelloApiTest {
 //        Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).isEqualTo(MediaType.TEXT_PLAIN_VALUE); // "text/plain;charset=ISO-8859-1"와 같이 인코딩 정보까지 확인함
         Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE); // 헤더의 시작값 비교
         // body Hello Spring
-        Assertions.assertThat(res.getBody()).isEqualTo("Hello Spring");
+        Assertions.assertThat(res.getBody()).isEqualTo("*Hello Spring*");
     }
 
     @Test
