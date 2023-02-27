@@ -8,26 +8,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
-//@RestController // 해당 어노테이션은 DispatcherServlet과 직접적인 연관은 없음
-@MyComponent
-@RequestMapping("/hello")
+@RestController // 해당 어노테이션은 DispatcherServlet과 직접적인 연관은 없음
 public class HelloController {
     private final HelloService helloService;
-    private final ApplicationContext applicationContext; // final로 만들면 안되는 이유 생성자 완료된 이후에 호출되기 때문에
 
-    public HelloController(HelloService helloService, ApplicationContext applicationContext) {
+    public HelloController(HelloService helloService) {
         this.helloService = helloService;
-        this.applicationContext = applicationContext;
     }
 
 
-    @GetMapping
-    @ResponseBody
-//    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @GetMapping("/hello")
     public String hello(String name) {
+        if (name == null || name.trim().length() == 0) throw new IllegalArgumentException();
 
-        return helloService.sayHello(Objects.requireNonNull(name));
+        return helloService.sayHello(name);
     }
-
-
 }
