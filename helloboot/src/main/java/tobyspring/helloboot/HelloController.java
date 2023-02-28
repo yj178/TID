@@ -16,8 +16,8 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-
     @GetMapping("/hello")
+
     public String hello(String name) {
         if (name == null || name.trim().length() == 0) throw new IllegalArgumentException();
 
