@@ -21,7 +21,7 @@ public class HelloApiTest {
         // 파라미터를 바꿔서 확인하고 싶은 경우 {} placeholder 사용
         // 타입 바디를 사용해서 확인하기
         // ResponseEntity타입은 response body 타입에 따라 String 혹은 DTO등 클래스를 활용하기도 함
-        ResponseEntity<String> res = rest.getForEntity("http://localhost:8080/hello?name={name}", String.class, "Spring");
+        ResponseEntity<String> res = rest.getForEntity("http://localhost:8080/app/hello?name={name}", String.class, "Spring");
 
         // status code 200
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK); // 틀리면 예외발생하면서 종료
