@@ -9,24 +9,32 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.ClassUtils;
 import tobyspring.config.ConditionalMyOnClass;
+import tobyspring.config.EnableMyConfigurationProperties;
 import tobyspring.config.MyAutoConfiguration;
 
 @MyAutoConfiguration
 //@Conditional(TomcatWebServerConfig.TomcatCondition.class)
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
+@EnableMyConfigurationProperties(ServerProperties.class)
 public class TomcatWebServerConfig {
-    @Value("${contextPath}")
-    String contextPath;
+//    @Value("${contextPath}")
+//    String contextPath;
+//
+//    @Value("${port:8080}")
+//    int port;
 
     @Bean("tomcatWebServerFactory")
     @ConditionalOnMissingBean
-    public ServletWebServerFactory servletWebServerFactory(Environment env) {
+    public ServletWebServerFactory servletWebServerFactory(ServerProperties properties) {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
 //        factory.setContextPath("/app");
-        factory.setContextPath(contextPath);
+        factory.setContextPath(properties.getContextPath());
+        factory.setPort(properties.getPort());
         return factory;
 
     }
+
+
 
 //    static class TomcatCondition implements Condition {
 //        @Override
