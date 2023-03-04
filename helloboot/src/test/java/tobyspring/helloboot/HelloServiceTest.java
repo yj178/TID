@@ -38,6 +38,6 @@ public class HelloServiceTest {
         HelloDecorator decorator = new HelloDecorator(new SimpleHelloService(helloRepositoryStub));
 
         String ret = decorator.sayHello("Test");
-        Assertions.assertThat(ret).isEqualTo("*Test*");
+        Assertions.assertThat(ret).isEqualTo("*Hello Test*");
     }
 }

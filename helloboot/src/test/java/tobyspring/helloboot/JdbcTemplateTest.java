@@ -1,30 +1,17 @@
 package tobyspring.helloboot;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
-@HellobootTest
-//@Transactional
-//@Rollback(value = false)
+@JdbcTest
 public class JdbcTemplateTest {
 
+    // 자동 구성에 의해 동작하는가?
     @Autowired
     JdbcTemplate jdbcTemplate;
-
-//    @BeforeEach
-//    void init(){
-//        jdbcTemplate.execute("create table if not exists hello(name varchar(50) primary key, count int)");
-//
-//    }
 
     @Test
     void insertAndQuery(){
