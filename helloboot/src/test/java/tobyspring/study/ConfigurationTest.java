@@ -11,22 +11,7 @@ import javax.xml.stream.events.Comment;
 public class ConfigurationTest {
     @Test
     void configuration() {
-        // 실패 둘이 다르다.
-//        Assertions.assertThat(new Common()).isSameAs(new Common());
 
-        // 통과 둘이 같다.
-//        Common common = new Common();
-//        Assertions.assertThat(common).isSameAs(common);
-
-        // 실패 둘이 다르다
-//        MyConfig myConfig =new MyConfig();
-//        Bean1 bean1 = myConfig.bean1();
-//        Bean2 bean2 = myConfig.bean2();
-//
-//        Assertions.assertThat(bean1).isSameAs(bean2);
-
-
-        // 통과... 둘이 같다. 왜????
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
         ac.register(MyConfig.class);
         ac.refresh();
